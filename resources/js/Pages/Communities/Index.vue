@@ -34,8 +34,10 @@
                   <td class="px-6 py-4">{{ community.name }}</td>
                   <td class="px-6 py-4">{{ community.slug }}</td>
                   <td class="px-6 py-4 text-right">
-                    <a href="#" class="text-indigo-500 hover:text-indigo-700"
-                      >Edit</a
+                    <Link
+                      :href="route('communities.edit', community.id)"
+                      class="text-indigo-600 hover:text-indigo-900"
+                      >Edit</Link
                     >
                   </td>
                 </tr>
