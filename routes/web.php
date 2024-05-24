@@ -22,13 +22,13 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::group(['middleware'=>['auth','verified']],function(){
+Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
 
-    Route::resource(name:'/communitie', controller:CommunityController::class);
+    Route::resource(name: '/communities', controller: CommunityController::class);
 });
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
