@@ -17,15 +17,8 @@
 
     <section class="m-2 flex p-2 md:flex-row">
       <div class="w-8/12">
-        <PostCard
-          v-for="post in posts.data"
-          :post="post"
-          :community="community.slug"
-          :key="post.id"
-        />
-        <div class="mt-4 p-2">
-          <Pagination :links="posts.meta.links" />
-        </div>
+        <h1>{{ post.title }}</h1>
+        Post Details
       </div>
       <div class="w-4/12 p-4">
         <div class="m-2 bg-slate-500 p-2 text-white">
@@ -44,6 +37,6 @@ import { Link } from "@inertiajs/vue3";
 
 defineProps({
   community: Object,
-  posts: Object,
+  post: Object,
 });
 </script>

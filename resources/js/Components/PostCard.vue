@@ -23,15 +23,23 @@
       </p>
     </header>
     <div class="my-4 flex space-x-4">
-      <button class="rounded border px-4 py-2">Comments(2)</button>
-      <button class="rounded bg-blue-500 px-4 py-2 text-white">
-        Read more →
-      </button>
+      <!-- Link with various classes for styling -->
+      <Link
+        :href="route('frontend.communities.post.show', [community, post.slug])"
+        class="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      >
+        Read more
+      </Link>
+
+      <!-- Paragraph with margin and padding classes -->
+      <p class="mr-4 p-2">Comments (2)</p>
     </div>
   </div>
 </template>
 
 <script setup>
+import { Link } from "@inertiajs/vue3";
+
 defineProps({
   post: Object,
   community: String,

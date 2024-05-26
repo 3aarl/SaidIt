@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\CommunityController;
 use App\Http\Controllers\Backend\CommunityPostController;
 use App\Http\Controllers\Frontend\CommunityController as FrontendCommunityController;
+use App\Http\Controllers\Frontend\PostController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -24,7 +25,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/s/{slug}',[FrontendCommunityController::class,'show'])->name('frontend.communities.show');
+Route::get('/s/{slug}', [FrontendCommunityController::class, 'show'])->name('frontend.communities.show');
+Route::get('/s/{community_slug}/posts/{post:slug}', [PostController::class, 'show'])->name('frontend.communities.post.show');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
 
