@@ -1,10 +1,11 @@
 <?php
-use App\Http\Controllers\Backend\CommunityController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Frontend\SubCommunityController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Backend\CommunityController;
+use App\Http\Controllers\Backend\CommunityPostController;
+use App\Http\Controllers\Frontend\CommunityController as FrontendCommunityController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -23,15 +24,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/s/{slug}',[SubCommunityController::class,'show'])->name('subcommunity.show');
+Route::get('/s/{slug}',[FrontendCommunityController::class,'show'])->name('subcommunity.show');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
+
+
 
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-
     Route::resource(name: '/dashboard/communities', controller: CommunityController::class);
+    Route::resource(name: '/dashboard/communities.posts', controller: CommunityPostController::class);
 });
 require __DIR__ . '/auth.php';
