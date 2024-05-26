@@ -24,7 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/s/{slug}',[FrontendCommunityController::class,'show'])->name('subcommunity.show');
+Route::get('/s/{slug}',[FrontendCommunityController::class,'show'])->name('frontend.communities.show');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
 

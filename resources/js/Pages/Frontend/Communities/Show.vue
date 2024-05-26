@@ -5,11 +5,12 @@
       <Link
         v-if="$page.props.auth.auth_check"
         :href="route('communities.posts.create', community.slug)"
-        class="rounded bg-indigo-500 px-3 py-4"
+        class="rounded bg-indigo-500 px-3 py-4 font-bold text-white hover:bg-indigo-300 transition-colors duration-200"
         >Create Post</Link
       >
     </div>
     <h1>{{ community.name }} Community Page</h1>
+    <p>{{ community.description }}</p>
   </GuestLayout>
 </template>
 
