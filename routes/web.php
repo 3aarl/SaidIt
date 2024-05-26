@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Backend\CommunityController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Frontend\SubCommunityController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -15,12 +16,14 @@ Route::get('/', function () {
 });
 
 
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/s/{slug}',[SubCommunityController::class,'show'])->name('subcommunity.show');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
 
@@ -29,6 +32,6 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     })->name('dashboard');
 
 
-    Route::resource(name: '/communities', controller: CommunityController::class);
+    Route::resource(name: '/dashboard/communities', controller: CommunityController::class);
 });
 require __DIR__ . '/auth.php';

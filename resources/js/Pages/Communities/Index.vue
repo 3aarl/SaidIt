@@ -70,7 +70,7 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head, Link } from "@inertiajs/vue3";
-import Pagination from "@/Components/pagination.vue";
+import Pagination from "@/Components/Pagination.vue";
 
 defineProps({
   communities: Object,
