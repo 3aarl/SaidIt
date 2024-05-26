@@ -30,7 +30,11 @@
                 </tr>
               </thead>
               <tbody class="text-sm font-medium">
-                <tr v-for="community in communities" :key="community.id">
+                <tr
+                  v-for="community in communities.data"
+                  :key="community.id"
+                  class="border-b border-gray-200 transition-colors duration-200 hover:bg-gray-300"
+                >
                   <td class="px-6 py-4">{{ community.name }}</td>
                   <td class="px-6 py-4">{{ community.slug }}</td>
                   <td class="px-6 py-4 text-right">
@@ -52,6 +56,10 @@
                 </tr>
               </tbody>
             </table>
+            <Pagination
+              :links="communities.links"
+              class="mt-4 bg-gray-200 p-1"
+            />
           </div>
         </div>
       </div>
@@ -62,6 +70,7 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head, Link } from "@inertiajs/vue3";
+import Pagination from "@/Components/pagination.vue";
 
 defineProps({
   communities: Object,
