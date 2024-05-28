@@ -39,13 +39,13 @@
                   <td class="px-6 py-4">{{ community.slug }}</td>
                   <td class="px-6 py-4 text-right">
                     <Link
-                      :href="route('communities.edit', community.id)"
+                      :href="route('communities.edit', community.slug)"
                       class="mr-3 text-indigo-600 hover:text-indigo-900"
                       >Edit</Link
                     >
 
                     <Link
-                      :href="route('communities.destroy', community.id)"
+                      :href="route('communities.destroy', community.slug)"
                       class="text-red-600 hover:text-red-900"
                       method="delete"
                       as="button"

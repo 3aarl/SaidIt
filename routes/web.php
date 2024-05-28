@@ -29,14 +29,7 @@ Route::get('/s/{slug}', [FrontendCommunityController::class, 'show'])->name('fro
 Route::get('/s/{community_slug}/posts/{post:slug}', [PostController::class, 'show'])->name('frontend.communities.post.show');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
-
-
-
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
-
-    Route::resource(name: '/dashboard/communities', controller: CommunityController::class);
-    Route::resource(name: '/dashboard/communities.posts', controller: CommunityPostController::class);
+    Route::resource(name: '/communities', controller: CommunityController::class);
+    Route::resource(name: '/communities.posts', controller: CommunityPostController::class);
 });
 require __DIR__ . '/auth.php';
