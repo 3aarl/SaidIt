@@ -35,7 +35,13 @@
                   :key="community.id"
                   class="border-b border-gray-200 transition-colors duration-200 hover:bg-gray-300"
                 >
-                  <td class="px-6 py-4">{{ community.name }}</td>
+                  <td class="px-6 py-4">
+                    <Link
+                      :href="route('frontend.communities.show', community.slug)"
+                      class="font-semibold text-blue-500 hover:text-blue-700"
+                      >{{ community.name }}</Link
+                    >
+                  </td>
                   <td class="px-6 py-4">{{ community.slug }}</td>
                   <td class="px-6 py-4 text-right">
                     <Link
