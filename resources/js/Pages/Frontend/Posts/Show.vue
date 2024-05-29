@@ -67,8 +67,53 @@
               >{{ post.data.url }}</a
             >
           </div>
+          <hr />
+          <div>
+            <ul role="list" class="m-2 divide-y divide-zinc-200 p-2">
+              <li
+                v-for="(comment, index) in post.data.comments"
+                :key="index"
+                class="flex flex-col py-4"
+              >
+                <div class="text-sm">
+                  Commented by
+                  <span class="ml-1 font-semibold text-slate-700">{{
+                    comment.username
+                  }}</span>
+                </div>
+                <div class="m2 p2 text-slate-600">{{ comment.content }}</div>
+              </li>
+            </ul>
+          </div>
+          <hr />
+          <div v-if="$page.props.auth.auth_check">
+            <form class="m-2 max-w-md p-2" @submit.prevent="submit">
+              <div class="mt-2">
+                <label
+                  for="comment"
+                  class="mb-2 block text-sm font-medium text-zinc-900"
+                  >Your comment</label
+                >
+                <textarea
+                  id="comment"
+                  v-model="form.content"
+                  rows="4"
+                  class="block w-full rounded-lg border border-zinc-300 bg-white p-2.5 text-sm text-zinc-900 focus:border-blue-500 focus:ring-blue-500"
+                  placeholder="Your comment..."
+                ></textarea>
+              </div>
+              <div class="mt-2">
+                <button
+                  class="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-700"
+                >
+                  Comment
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
+
       <div class="w-full p-4 md:w-4/12">
         <div class="m-2 bg-slate-500 p-2 text-white">
           <h2>Latests Communities</h2>
@@ -82,10 +127,29 @@
 import Pagination from "@/Components/Pagination.vue";
 import PostCard from "@/Components/PostCard.vue";
 import GuestLayout from "@/Layouts/GuestLayout.vue";
-import { Link } from "@inertiajs/vue3";
+// import { Link } from "@inertiajs/vue3";
+import { Link, useForm } from "@inertiajs/vue3";
 
-defineProps({
+const props = defineProps({
   community: Object,
   post: Object,
 });
+
+const form = useForm({
+  content: "",
+});
+
+const submit = () => {
+  form.post(
+    route("frontend.posts.comments", [
+      props.community.slug,
+      props.post.data.slug,
+    ]),
+    {
+      onSuccess: () => {
+        form.content = "";
+      },
+    },
+  );
+};
 </script>
