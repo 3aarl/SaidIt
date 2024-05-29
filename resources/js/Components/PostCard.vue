@@ -5,7 +5,7 @@
     <!-- This creates the outer box -->
     <div class="flex">
       <div class="mr-3 text-lg">
-        <PostVote />
+        <PostVote :post="post.slug" />
       </div>
       <div>
         <div class="m-2 flex p-2">
