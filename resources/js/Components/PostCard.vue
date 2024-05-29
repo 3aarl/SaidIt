@@ -35,7 +35,7 @@
           </Link>
 
           <!-- Paragraph with margin and padding classes -->
-          <p class="mr-4 p-2">Comments (2)</p>
+          <p class="mr-4 p-2">Comments ({{ post.comments_count }})</p>
         </div>
       </div>
     </div>
