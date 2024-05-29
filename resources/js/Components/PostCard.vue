@@ -1,6 +1,6 @@
 <template>
   <div
-    class="mx-auto my-8 mt-4 box-border h-auto w-full rounded-md border-2 p-8 shadow-lg"
+    class="mx-auto my-8 mt-4 box-border h-auto w-full rounded-md border-2 shadow-lg"
   >
     <!-- This creates the outer box -->
     <div class="flex">

@@ -24,92 +24,99 @@
             </Link>
           </h2>
         </div>
-        <div class="m-2 bg-white p-2 text-sm text-slate-400">
-          <div class="m-2 flex flex-col justify-between md:flex-row">
-            <div>
-              Posted by
-              <span class="ml-2 text-slate-700"> {{ post.data.username }}</span>
-            </div>
-            <div v-if="$page.props.auth.auth_check && post.data.owner">
-              <Link
-                :href="
-                  route('communities.posts.edit', [
-                    community.slug,
-                    post.data.slug,
-                  ])
-                "
-                class="mr-2 rounded-md bg-blue-500 px-4 py-2 font-semibold text-white hover:bg-blue-700"
-                >Edit</Link
-              >
-              <Link
-                :href="
-                  route('communities.posts.destroy', [
-                    community.slug,
-                    post.data.slug,
-                  ])
-                "
-                class="rounded-md bg-red-500 px-4 py-2 font-semibold text-white hover:bg-red-700"
-                method="delete"
-                as="button"
-                type="button"
-                >Delete</Link
-              >
-            </div>
-          </div>
-          <div class="p-2">
-            <h1 class="text-3xl font-semibold text-black">
-              {{ post.data.title }}
-            </h1>
-            <p class="my-2 text-slate-700">{{ post.data.description }}</p>
-            <a
-              :href="post.data.url"
-              class="text-sm font-semibold text-blue-500 hover:text-blue-300"
-              >{{ post.data.url }}</a
-            >
-          </div>
-          <hr />
+        <div class="m-2 flex bg-white p-2 text-sm text-slate-400">
           <div>
-            <ul role="list" class="m-2 divide-y divide-zinc-200 p-2">
-              <li
-                v-for="(comment, index) in post.data.comments"
-                :key="index"
-                class="flex flex-col py-4"
-              >
-                <div class="text-sm">
-                  Commented by
-                  <span class="ml-1 font-semibold text-slate-700">{{
-                    comment.username
-                  }}</span>
-                </div>
-                <div class="m2 p2 text-slate-600">{{ comment.content }}</div>
-              </li>
-            </ul>
+            <PostVote :post="post.data" />
           </div>
-          <hr />
-          <div v-if="$page.props.auth.auth_check">
-            <form class="m-2 max-w-md p-2" @submit.prevent="submit">
-              <div class="mt-2">
-                <label
-                  for="comment"
-                  class="mb-2 block text-sm font-medium text-zinc-900"
-                  >Your comment</label
+          <div class="w-full">
+            <div class="m-2 flex flex-col justify-between md:flex-row">
+              <div>
+                Posted by
+                <span class="ml-2 text-slate-700">
+                  {{ post.data.username }}</span
                 >
-                <textarea
-                  id="comment"
-                  v-model="form.content"
-                  rows="4"
-                  class="block w-full rounded-lg border border-zinc-300 bg-white p-2.5 text-sm text-zinc-900 focus:border-blue-500 focus:ring-blue-500"
-                  placeholder="Your comment..."
-                ></textarea>
               </div>
-              <div class="mt-2">
-                <button
-                  class="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-700"
+              <div v-if="$page.props.auth.auth_check && post.data.owner">
+                <Link
+                  :href="
+                    route('communities.posts.edit', [
+                      community.slug,
+                      post.data.slug,
+                    ])
+                  "
+                  class="mr-2 rounded-md bg-blue-500 px-4 py-2 font-semibold text-white hover:bg-blue-700"
+                  >Edit</Link
                 >
-                  Comment
-                </button>
+                <Link
+                  :href="
+                    route('communities.posts.destroy', [
+                      community.slug,
+                      post.data.slug,
+                    ])
+                  "
+                  class="rounded-md bg-red-500 px-4 py-2 font-semibold text-white hover:bg-red-700"
+                  method="delete"
+                  as="button"
+                  type="button"
+                  >Delete</Link
+                >
               </div>
-            </form>
+            </div>
+            <div class="p-2">
+              <h1 class="text-3xl font-semibold text-black">
+                {{ post.data.title }}
+              </h1>
+              <p class="my-2 text-slate-700">{{ post.data.description }}</p>
+              <a
+                :href="post.data.url"
+                class="text-sm font-semibold text-blue-500 hover:text-blue-300"
+                >{{ post.data.url }}</a
+              >
+            </div>
+            <hr />
+            <div>
+              <ul role="list" class="m-2 divide-y divide-zinc-200 p-2">
+                <li
+                  v-for="(comment, index) in post.data.comments"
+                  :key="index"
+                  class="flex flex-col py-4"
+                >
+                  <div class="text-sm">
+                    Commented by
+                    <span class="ml-1 font-semibold text-slate-700">{{
+                      comment.username
+                    }}</span>
+                  </div>
+                  <div class="m2 p2 text-slate-600">{{ comment.content }}</div>
+                </li>
+              </ul>
+            </div>
+            <hr />
+            <div v-if="$page.props.auth.auth_check">
+              <form class="m-2 max-w-md p-2" @submit.prevent="submit">
+                <div class="mt-2">
+                  <label
+                    for="comment"
+                    class="mb-2 block text-sm font-medium text-zinc-900"
+                    >Your comment</label
+                  >
+                  <textarea
+                    id="comment"
+                    v-model="form.content"
+                    rows="4"
+                    class="block w-full rounded-lg border border-zinc-300 bg-white p-2.5 text-sm text-zinc-900 focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="Your comment..."
+                  ></textarea>
+                </div>
+                <div class="mt-2">
+                  <button
+                    class="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-700"
+                  >
+                    Comment
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

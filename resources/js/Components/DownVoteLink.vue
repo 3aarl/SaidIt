@@ -4,7 +4,7 @@
     method="post"
     as="button"
     type="button"
-    class="text-gray-400 hover:text-red-500"
+    class="my-2 flex justify-center text-gray-400 hover:text-red-400"
     preserve-scroll
   >
     <svg
