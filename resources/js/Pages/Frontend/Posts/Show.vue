@@ -17,7 +17,7 @@
 
     <section class="m-2 flex flex-col p-2 md:flex-row">
       <div class="w-full md:w-8/12">
-        <div class="m-2 bg-white p-2">
+        <div class="m-2 rounded-lg bg-white p-2">
           <h2 class="text-2xl font-semibold text-black">
             <Link :href="route('frontend.communities.show', community.slug)">
               s/{{ community.name }}
@@ -26,7 +26,7 @@
         </div>
         <div class="m-2 flex bg-white p-2 text-sm text-slate-400">
           <div>
-            <PostVote :post="post.data" />
+            <PostVote :postVotes="postVotes" />
           </div>
           <div class="w-full">
             <div class="m-2 flex flex-col justify-between md:flex-row">
@@ -121,10 +121,16 @@
         </div>
       </div>
 
-      <div class="w-full p-4 md:w-4/12">
-        <div class="m-2 bg-slate-500 p-2 text-white">
-          <h2>Latests Communities</h2>
-        </div>
+      <div class="w-full md:w-4/12">
+        <PostList :posts="posts.data" :community="community">
+          <template #title>
+            <h2
+              class="rounded-lg bg-indigo-700 p-6 text-lg font-semibold text-white"
+            >
+              Popular Posts
+            </h2>
+          </template>
+        </PostList>
       </div>
     </section>
   </GuestLayout>
@@ -133,6 +139,7 @@
 <script setup>
 import Pagination from "@/Components/Pagination.vue";
 import PostCard from "@/Components/PostCard.vue";
+import PostList from "@/Components/PostList.vue";
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 // import { Link } from "@inertiajs/vue3";
 import { Link, useForm } from "@inertiajs/vue3";
@@ -140,6 +147,7 @@ import { Link, useForm } from "@inertiajs/vue3";
 const props = defineProps({
   community: Object,
   post: Object,
+  posts: Object,
 });
 
 const form = useForm({

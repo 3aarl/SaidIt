@@ -4,15 +4,20 @@
       <slot name="title" />
     </h2>
     <ul role="list" class="divide-y divide-slate-300 p-4 dark:divide-slate-700">
-      <li v-for="community in communities" :key="community.id" class="sm:py-4">
+      <li v-for="post in posts" :key="post.id" class="sm:py-4">
         <div class="flex items-center space-x-4">
           <Link
-            :href="route('frontend.communities.show', community.slug)"
+            :href="
+              route('frontend.communities.post.show', [
+                community.slug,
+                post.slug,
+              ])
+            "
             class="truncate text-sm font-semibold text-slate-800 hover:text-indigo-700 dark:text-slate-400"
           >
-            {{ community.name }}
+            {{ post.title }}
           </Link>
-          <div>Posts({{ community.posts_count }})</div>
+          <div>Votes({{ post.votes }})</div>
         </div>
       </li>
     </ul>
@@ -23,6 +28,7 @@
 import { Link } from "@inertiajs/vue3";
 
 defineProps({
-  communities: Object,
+  community: Object,
+  posts: Object,
 });
 </script>

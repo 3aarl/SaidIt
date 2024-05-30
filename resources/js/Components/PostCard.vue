@@ -9,20 +9,31 @@
       </div>
       <div>
         <div class="m-2 flex p-2">
-          <span class="mr-3 font-semibold">r/{{ community }}</span>
+          <Link
+            :href="route('frontend.communities.show', community)"
+            class="mr-3 font-semibold hover:text-indigo-700"
+            >r/{{ community }}</Link
+          >
           <div class="flex">
             Posted By
             <span class="ml-1 font-semibold">{{ post.username }}</span>
           </div>
         </div>
-        <header class="my-8">
-          <h1 class="text-2xl font-bold">
-            {{ post.title }}
-          </h1>
-          <p class="mt-4 text-gray-700">
-            {{ post.description }}
-          </p>
-        </header>
+        <Link
+          :href="
+            route('frontend.communities.post.show', [community, post.slug])
+          "
+        >
+          <header class="my-8">
+            <h1 class="text-2xl font-bold hover:text-indigo-700">
+              {{ post.title }}
+            </h1>
+
+            <p class="mt-4 text-gray-700">
+              {{ post.description }}
+            </p>
+          </header>
+        </Link>
         <div class="my-4 flex space-x-4">
           <!-- Link with various classes for styling -->
           <Link
