@@ -16,7 +16,8 @@
           >
           <div class="flex">
             Posted By
-            <span class="ml-1 font-semibold">{{ post.username }}</span>
+            <span class="mx-1 font-semibold">{{ post.username }}</span>
+            {{ post.created_at }}
           </div>
         </div>
         <Link

@@ -24,6 +24,7 @@ class PostShowResource extends JsonResource
             'url' => $this->url,
             'comments' => CommentResource::collection($this->whenLoaded('comments')),
             'postVotes' => $this->whenloaded('postVotes'),
+            'created_at' => $this->created_at->diffForHumans(),
         ];
     }
 }
