@@ -26,7 +26,7 @@
         </div>
         <div class="m-2 flex bg-white p-2 text-sm text-slate-400">
           <div>
-            <PostVote :postVotes="postVotes" />
+            <PostVote :post="post.data" />
           </div>
           <div class="w-full">
             <div class="m-2 flex flex-col justify-between md:flex-row">
@@ -36,8 +36,9 @@
                   {{ post.data.username }}</span
                 >
               </div>
-              <div v-if="$page.props.auth.auth_check && post.data.owner">
+              <div v-if="$page.props.auth.auth_check">
                 <Link
+                  v-if="can_update"
                   :href="
                     route('communities.posts.edit', [
                       community.slug,
@@ -48,6 +49,7 @@
                   >Edit</Link
                 >
                 <Link
+                  v-if="can_delete"
                   :href="
                     route('communities.posts.destroy', [
                       community.slug,
@@ -140,6 +142,7 @@
 import Pagination from "@/Components/Pagination.vue";
 import PostCard from "@/Components/PostCard.vue";
 import PostList from "@/Components/PostList.vue";
+import PostVote from "@/Components/PostVote.vue";
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 // import { Link } from "@inertiajs/vue3";
 import { Link, useForm } from "@inertiajs/vue3";
@@ -148,6 +151,8 @@ const props = defineProps({
   community: Object,
   post: Object,
   posts: Object,
+  can_delete: Boolean,
+  can_update: Boolean,
 });
 
 const form = useForm({
