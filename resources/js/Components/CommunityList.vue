@@ -4,7 +4,7 @@
       <li v-for="community in communities" :key="community.id" class="sm:py-4">
         <div class="flex items-center space-x-4">
           <Link
-            href="route('Frontend.communities.show',community.slug)"
+            :href="route('frontend.communities.show', community.slug)"
             class="truncate text-sm font-semibold text-slate-800 dark:text-slate-400"
           >
             {{ community.name }}
