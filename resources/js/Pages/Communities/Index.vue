@@ -15,7 +15,7 @@
             <h2 class="text-xl font-bold">Communities Table</h2>
             <Link
               :href="route('communities.create')"
-              class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
+              class="inline-flex items-center justify-center rounded-md border border-transparent bg-primary-500 px-4 py-2 text-sm font-medium text-text-50 shadow-sm hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 sm:w-auto"
             >
               Add Community
             </Link>
@@ -38,7 +38,7 @@
                   <td class="px-6 py-4">
                     <Link
                       :href="route('frontend.communities.show', community.slug)"
-                      class="font-semibold text-blue-500 hover:text-blue-700"
+                      class="font-semibold text-accent-400 hover:text-accent-200"
                       >{{ community.name }}</Link
                     >
                   </td>
@@ -46,13 +46,13 @@
                   <td class="px-6 py-4 text-right">
                     <Link
                       :href="route('communities.edit', community.slug)"
-                      class="mr-3 text-indigo-600 hover:text-indigo-900"
+                      class="mr-3 text-accent-300 hover:text-secondary-400"
                       >Edit</Link
                     >
 
                     <Link
                       :href="route('communities.destroy', community.slug)"
-                      class="text-red-600 hover:text-red-900"
+                      class="text-rose-500 hover:text-rose-900"
                       method="delete"
                       as="button"
                       type="button"

@@ -3,13 +3,13 @@
     <UpVoteLink
       :slug="post.slug"
       :class="{
-        'text-blue-600': post.postVotes[0] && post.postVotes[0].vote == 1,
+        'text-accent-500': post.postVotes[0] && post.postVotes[0].vote == 1,
       }"
     />
     <div
       class="my-2 p-2 font-bold"
       :class="{
-        'text-blue-600': post.postVotes[0] && post.postVotes[0].vote == 1,
+        'text-accent-500': post.postVotes[0] && post.postVotes[0].vote == 1,
         'text-red-600': post.postVotes[0] && post.postVotes[0].vote == -1,
       }"
     >

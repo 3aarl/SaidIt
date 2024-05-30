@@ -9,7 +9,7 @@
         <Link
           v-if="$page.props.auth.auth_check"
           :href="route('communities.posts.create', community.slug)"
-          class="rounded bg-indigo-500 px-3 py-2 font-bold text-white transition-colors duration-200 hover:bg-indigo-300"
+          class="rounded bg-secondary-500 px-3 py-2 font-bold text-white transition-colors duration-200 hover:bg-secondary-600"
           >Create Post</Link
         >
       </div>
@@ -30,7 +30,7 @@
       <div class="w-4/12 p-4">
         <div>
           <h2
-            class="rounded-t-lg bg-indigo-700 p-6 text-lg font-semibold text-white"
+            class="rounded-t-lg bg-primary-600 p-6 text-lg font-semibold text-text-50"
           >
             About {{ community.name }}
           </h2>

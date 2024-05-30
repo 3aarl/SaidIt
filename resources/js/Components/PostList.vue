@@ -1,6 +1,8 @@
 <template>
   <div class="w-full rounded-lg border bg-white shadow-md">
-    <h2 class="rounded-lg bg-indigo-700 p-6 text-lg font-semibold text-white">
+    <h2
+      class="rounded-lg p-6 text-lg font-semibold text-white hover:text-secondary-400"
+    >
       <slot name="title" />
     </h2>
     <ul role="list" class="divide-y divide-slate-300 p-4 dark:divide-slate-700">
@@ -13,7 +15,7 @@
                 post.slug,
               ])
             "
-            class="truncate text-sm font-semibold text-slate-800 hover:text-indigo-700 dark:text-slate-400"
+            class="truncate text-sm font-semibold text-text-100 hover:text-secondary-400 dark:text-slate-400"
           >
             {{ post.title }}
           </Link>

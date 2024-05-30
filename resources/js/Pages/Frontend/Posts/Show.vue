@@ -9,7 +9,7 @@
         <Link
           v-if="$page.props.auth.auth_check"
           :href="route('communities.posts.create', community.slug)"
-          class="rounded bg-indigo-500 px-3 py-2 font-bold text-white transition-colors duration-200 hover:bg-indigo-300"
+          class="rounded bg-secondary-500 px-3 py-2 font-bold text-white transition-colors duration-200 hover:bg-secondary-600"
           >Create Post</Link
         >
       </div>
@@ -46,7 +46,7 @@
                       post.data.slug,
                     ])
                   "
-                  class="mr-2 rounded-md bg-blue-500 px-4 py-2 font-semibold text-white hover:bg-blue-700"
+                  class="mr-2 rounded-md bg-secondary-500 px-4 py-2 font-semibold text-white hover:bg-secondary-400"
                   >Edit</Link
                 >
                 <Link
@@ -57,7 +57,7 @@
                       post.data.slug,
                     ])
                   "
-                  class="rounded-md bg-red-500 px-4 py-2 font-semibold text-white hover:bg-red-700"
+                  class="rounded-md bg-rose-400 px-4 py-2 font-semibold text-white hover:bg-red-600"
                   method="delete"
                   as="button"
                   type="button"
@@ -113,7 +113,7 @@
                 </div>
                 <div class="mt-2">
                   <button
-                    class="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-700"
+                    class="rounded-md bg-secondary-500 px-4 py-2 text-white hover:bg-secondary-400"
                   >
                     Comment
                   </button>
@@ -128,7 +128,7 @@
         <PostList :posts="posts.data" :community="community">
           <template #title>
             <h2
-              class="rounded-lg bg-indigo-700 p-6 text-lg font-semibold text-white"
+              class="rounded-lg bg-primary-700 p-6 text-lg font-semibold text-text-50"
             >
               Popular Posts
             </h2>
