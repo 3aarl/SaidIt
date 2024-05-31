@@ -2,6 +2,10 @@
 
 An Applications of Development and Emerging Technologies Finals Project
 
+# About
+
+SaidIt is a reddit clone made in Laravel, with TailwindCSS, InertiaJS, and VueJS. With the intent to understand how to develop a website with features such as posting, account creation, and etc.
+
 # Initialization
 
 ## **REQUIREMENTS**
