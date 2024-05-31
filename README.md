@@ -16,9 +16,10 @@ An Applications of Development and Emerging Technologies Finals Project
 ### Composer + Node.JS Installations
 
 Open the terminal (Ctrl + Shift + `) and type
-`npm install` to install Node Module and `composer install` to install your Vendor file.
+`npm install`to install Node Module and`composer install` to install your Vendor file.
 
 ---
+
 ### .env Setup
 
 Copy the `.env.example`, replace the following code with your own personal database
@@ -39,6 +40,7 @@ Afterwards, replace the following code to match your mailtrap specifications
     MAIL_PASSWORD=null
 
 ### Sample
+
     MAIL_MAILER=smtp
     MAIL_HOST=sandbox.smtp.mailtrap.io
     MAIL_PORT=2525
@@ -46,7 +48,9 @@ Afterwards, replace the following code to match your mailtrap specifications
     MAIL_PASSWORD=****\*\*****a420
 
 ---
+
 ## Migrations
+
 - ### php artisan migrate
 
 - ### php artisan migrate:fresh
@@ -62,18 +66,27 @@ php artisan code to try to publish Slugs
     php artisan vendor:publish --provider="Cviebrock\EloquentSluggable\ServiceProvider"
 
 # Troubleshooting
+
 ## Unable to resolve dependency tree error when installing npm packages
- ```npm run build```
+
+`npm run build`
 
 find package.json
-add ```"type": "module"```
+add `"type": "module"`
 
 ## PHP has an error
-change the ```php.ini```, remove the ```;``` in ```extensions=zip```
+
+change the `php.ini`, remove the `;` in `extensions=zip`
 
 ## middleware not found
-Fix = 
-```composer require inertiajs/inertia-laravel```
-or
-```composer dump-autoload```
 
+Fix =
+`composer require inertiajs/inertia-laravel`
+or
+`composer dump-autoload`
+
+# References and Tools
+
+- Code With Tony (September 6,2022) Laravel Reddit Clone, Youtube. https://youtube.com/playlist?list=PL6tf8fRbavl2IU88yNI338feOyiYI6xh6&si=rds_nGriO_dkrgk3
+
+- Mailtrap https://mailtrap.io/
